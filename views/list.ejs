@@ -1,31 +1,73 @@
 <%-include('partials/header');-%>
+<head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let count = 6;
+            //Add
+            document.querySelector('#add-button').onclick = function() {
+                ++count;
+                let data = document.querySelector('#input').value;
+
+                newElement = `<li><div id=${count} class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> ${data} <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i></li>`;
+
+                let newHTML = newElement + document.querySelector('#list').innerHTML;
+                document.querySelector('#list').innerHTML = newHTML;
+            };
+
+            //Clear
+            document.querySelector('#clear-button').onclick = function() {
+                count = 0;
+                document.querySelector('#list').innerHTML = '';
+            };
+
+            //Delete specific tasks
+            
+        });
+    </script>
+</head>
 <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="row container d-flex justify-content-center">
             <div class="col-md-12">
                 <div class="card px-3">
                     <div class="card-body">
-                        <h4 class="card-title">Awesome Todo list</h4>
-                        <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> </div>
+                        <h4 class="card-title">To Do List</h4>
+                        <div class="add-items d-flex"> 
+                            <input type="text" id="input" class="form-control todo-list-input" placeholder="What are the tasks for today?"> 
+                            <button id="add-button" class="add btn btn-primary font-weight-bold todo-list-add-btn">ADD</button> 
+                            <button id="clear-button" class="add btn btn-primary font-weight-bold todo-list-add-btn">CLEAR</button> 
+                        </div>
                         <div class="list-wrapper">
-                            <ul class="d-flex flex-column-reverse todo-list">
+                            <ul id="list" class="d-flex flex-column todo-list">
                                 <li>
-                                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> For what reason would it be advisable. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
-                                </li>
-                                <li class="completed">
-                                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> For what reason would it be advisable for me to think. <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
-                                </li>
-                                <li>
-                                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> it be advisable for me to think about business content? <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    <div class="form-check"> <label class="form-check-label"> 
+                                        <input class="checkbox" type="checkbox"> Buy Groceries <i class="input-helper"></i></label> 
+                                    </div> <i class="remove mdi mdi-close-circle-outline"></i>
                                 </li>
                                 <li>
-                                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print Statements all <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
-                                </li>
-                                <li class="completed">
-                                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" checked=""> Call Rampbo <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    <div class="form-check"> <label class="form-check-label"> 
+                                        <input class="checkbox" type="checkbox"> Water the plants <i class="input-helper"></i></label> 
+                                    </div> <i class="remove mdi mdi-close-circle-outline"></i>
                                 </li>
                                 <li>
-                                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> Print bills <i class="input-helper"></i></label> </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                    <div class="form-check"> <label class="form-check-label"> 
+                                        <input class="checkbox" type="checkbox"> Wash the bike <i class="input-helper"></i></label> 
+                                    </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check"> <label class="form-check-label"> 
+                                        <input class="checkbox" type="checkbox"> Clean the wardrobe <i class="input-helper"></i></label> 
+                                    </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check"> <label class="form-check-label"> 
+                                        <input class="checkbox" type="checkbox"> Watch F1 at 5:30pm <i class="input-helper"></i></label> 
+                                    </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check"> <label class="form-check-label"> 
+                                        <input class="checkbox" type="checkbox"> Print Sem registration form <i class="input-helper"></i></label> 
+                                    </div> <i class="remove mdi mdi-close-circle-outline"></i>
                                 </li>
                             </ul>
                         </div>
