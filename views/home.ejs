@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+.button {
+  border: none;
+  border-color: black;
+  color: white;
+  padding: 20px;
+  width: 200px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #CC5371;
+  border-radius: 6px;
+  transition: all 0.5s;
+  }
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+} 
+h1 {
+  text-align: center;
+  color: #CC5371;
+}
+.wrapper {
+    text-align: center;
+}
+nav {
+  width: 80%;
+  height: 50px;
+  background-color: gray;
+  float: left;
+  padding: 10px; /* 10px padding */
+  border: 2px solid red;
+  background-clip: content-box; /* <---- */
+  box-shadow: inset 0 0 0 10px lightGreen; /* <-- 10px spread radius */
+}
+      </style>
+    </head>
+    <body style="background-color:powderblue;">
+      <h1> This is the Home Page</h1>
+        <div class="wrapper">
+            <form action="add-link-here">
+               <button class="button"><span>Login  </span></button>
+            </form>
+            <form action="add-link-here">
+              <button class="button"><span>Register  </span></button>
+            </form>
+        </div>
+    </body>
+</html>
