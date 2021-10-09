@@ -8342,7 +8342,7 @@ h1, h2, h3, h4, h5,
   padding: 10px 20px;
   border-radius: 50px; }
   .btn:hover, .btn:active, .btn:focus {
-    outline: none; }
+    outline: #f35588; }
   .btn.btn-primary {
     background: #f35588;
     border: 1px solid #f35588;
@@ -8452,11 +8452,12 @@ h1, h2, h3, h4, h5,
       }
       
       .card .card-title {
-          color: #000000;
+          color: #ff0062;
           margin-bottom: 0.625rem;
           text-transform: capitalize;
-          font-size: 0.875rem;
-          font-weight: 500
+          font-size: 50px;
+          font-weight: 500;
+          flex: auto 2 auto;
       }
       
       .add-items {
@@ -8773,7 +8774,7 @@ h1, h2, h3, h4, h5,
       
       .text-primary,
       .list-wrapper .completed .remove {
-          color: #405189 !important
+          color: #89405c !important
       }
       
       .list-wrapper .remove {
