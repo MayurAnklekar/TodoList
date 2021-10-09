@@ -21,7 +21,7 @@
                 <div class="text w-100">
                   <h2>Welcome to login</h2>
                   <p>Don't have an account?</p>
-                  <a href="#" class="btn btn-white btn-outline-white"
+                  <a href="/register" class="btn btn-white btn-outline-white"
                     >Sign Up</a
                   >
                 </div>
@@ -34,6 +34,7 @@
                   <div class="w-100">
                     <p class="social-media d-flex justify-content-end">
                       <a
+                        id="google"
                         href="#"
                         class="
                           social-icon
@@ -41,9 +42,10 @@
                           align-items-center
                           justify-content-center
                         "
-                        ><span class="fa fa-facebook"></span
+                        ><span class="fa fa-google"></span
                       ></a>
                       <a
+                        id="github"
                         href="#"
                         class="
                           social-icon
@@ -51,7 +53,7 @@
                           align-items-center
                           justify-content-center
                         "
-                        ><span class="fa fa-twitter"></span
+                        ><span class="fa fa-github"></span
                       ></a>
                     </p>
                   </div>
@@ -60,6 +62,7 @@
                   <div class="form-group mb-3">
                     <label class="label" for="name">Username</label>
                     <input
+                      id="email"
                       type="text"
                       class="form-control"
                       placeholder="Username"
@@ -69,14 +72,16 @@
                   <div class="form-group mb-3">
                     <label class="label" for="password">Password</label>
                     <input
-                      type="password"
+                      type="pw"
                       class="form-control"
                       placeholder="Password"
                       required
                     />
                   </div>
                   <div class="form-group">
+                    
                     <button
+                      id="login"
                       type="submit"
                       class="form-control btn btn-primary submit px-3"
                     >
@@ -95,6 +100,95 @@
         </div>
       </div>
     </section>
+
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+      import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, signInWithRedirect} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+  
+      const firebaseConfig = {
+        apiKey: "AIzaSyC2guc1cPYBcymCTjknZcDEupJsfFUuJE4",
+        authDomain: "todolist-771a9.firebaseapp.com",
+        projectId: "todolist-771a9",
+        storageBucket: "todolist-771a9.appspot.com",
+        messagingSenderId: "538280353208",
+        appId: "1:538280353208:web:871b3b4fa2d5d7fd26434d",
+        measurementId: "G-LFPLZRLCNC"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      document.getElementById("login").addEventListener('click', function() {
+        const email = document.getElementById("email").value
+        const password = document.getElementById("pw").value
+
+        signInWithEmailAndPassword(auth, email, password)
+       .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+        })
+       .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+       });
+
+      });
+
+
+      const provider = new GoogleAuthProvider();
+
+
+      document.getElementById("signup").addEventListener('click', function() {
+        const email = document.getElementById("email").value
+        const password = document.getElementById("pw").value
+
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+
+      });
+
+
+
+      //google sign-up
+      
+      const provider = new GoogleAuthProvider();
+
+      document.getElementById("google").addEventListener('click', function() {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+          }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+          });
+      });
+
+      //github sign-in
+      const provider_github = new GithubAuthProvider();
+      document.getElementById("github").addEventListener('click', function() {
+        signInWithRedirect(auth, provider);
+
+      });
+
+
+
+
+
+    </script>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
