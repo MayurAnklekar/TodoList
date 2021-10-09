@@ -21,7 +21,7 @@
                 <div class="text w-100">
                   <h2>Welcome to register</h2>
                   <p>Have an account?</p>
-                  <a href="#" class="btn btn-white btn-outline-white"
+                  <a href="/login" class="btn btn-white btn-outline-white"
                     >Sign In</a
                   >
                 </div>
@@ -109,19 +109,29 @@
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
-      import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+      import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
   
+      // const firebaseConfig = {
+      //   apiKey: "AIzaSyDwEsxCKmQTTriw1mHNDIbKxDirFugRds8",
+      //   authDomain: "todolist-planner.firebaseapp.com",
+      //   projectId: "todolist-planner",
+      //   storageBucket: "todolist-planner.appspot.com",
+      //   messagingSenderId: "385341003292",
+      //   appId: "1:385341003292:web:1886d3667fdd629d30f1d9"
+      // };
+
       const firebaseConfig = {
-        apiKey: "AIzaSyDwEsxCKmQTTriw1mHNDIbKxDirFugRds8",
-        authDomain: "todolist-planner.firebaseapp.com",
-        projectId: "todolist-planner",
-        storageBucket: "todolist-planner.appspot.com",
-        messagingSenderId: "385341003292",
-        appId: "1:385341003292:web:1886d3667fdd629d30f1d9"
+        apiKey: "AIzaSyC2guc1cPYBcymCTjknZcDEupJsfFUuJE4",
+        authDomain: "todolist-771a9.firebaseapp.com",
+        projectId: "todolist-771a9",
+        storageBucket: "todolist-771a9.appspot.com",
+        messagingSenderId: "538280353208",
+        appId: "1:538280353208:web:871b3b4fa2d5d7fd26434d",
+        measurementId: "G-LFPLZRLCNC"
       };
     
       const app = initializeApp(firebaseConfig);
-      const auth = getAuth();
+      const auth = getAuth(app);
 
       document.getElementById("signup").addEventListener('click', function() {
         const email = document.getElementById("email").value
