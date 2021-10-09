@@ -1,5 +1,6 @@
 const express = require("express");
 const ejs = require("ejs");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -14,6 +15,42 @@ app.use(
 
 
 app.use(express.static(__dirname + "/public"));
+
+mongoose
+  .connect("mongodb+srv://admin-mayur:githubisamazing@cluster0.sgnjv.mongodb.net/blogs?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(console.log("Connected to MongoDB"));
+
+  const userSchema = new mongoose.Schema({
+    email:String,
+    password:String
+  });
+
+  const User = mongoose.model("User", userSchema);
+
+
+const todoSchema = new mongoose.Schema({
+  todo:{
+    type:String,
+    required:true
+  }
+})
+
+app.get("/add", function(req, res){
+  const {todo}=req.body;
+    const newTodo=new Todo_model({todo})
+    if(todo==""){
+        res.redirect('/')
+    }
+    newTodo.save()
+    .then(()=>{
+        console.log("done")
+        res.redirect('/')
+    })
+    .catch(err=>console.log(err))
+})
 
 app.get("/", function (req, res) {
   res.render("home");

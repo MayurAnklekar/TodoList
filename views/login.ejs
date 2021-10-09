@@ -139,23 +139,7 @@
       });
 
 
-      const provider = new GoogleAuthProvider();
 
-
-      document.getElementById("signup").addEventListener('click', function() {
-        const email = document.getElementById("email").value
-        const password = document.getElementById("pw").value
-
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-          });
-
-      });
 
 
 
