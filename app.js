@@ -2,6 +2,7 @@ const express = require("express");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -38,25 +39,28 @@ const todoSchema = new mongoose.Schema({
   }
 })
 
-app.get("/add", function(req, res){
-  const {todo}=req.body;
-    const newTodo=new Todo_model({todo})
-    if(todo==""){
-        res.redirect('/')
-    }
-    newTodo.save()
-    .then(()=>{
-        console.log("done")
-        res.redirect('/')
-    })
-    .catch(err=>console.log(err))
-})
+// app.get("/add", function(req, res){
+//   const {todo}=req.body;
+//     const newTodo=new Todo_model({todo})
+//     if(todo==""){
+//         res.redirect('/')
+//     }
+//     newTodo.save()
+//     .then(()=>{
+//         console.log("done")
+//         res.redirect('/')
+//     })
+//     .catch(err=>console.log(err))
+// })
+
+
 
 app.get("/", function (req, res) {
   res.render("home");
 });
 
 app.get("/list", function (req, res) {
+  
   res.render("list");
 });
 

@@ -139,10 +139,6 @@
       });
 
 
-
-
-
-
       //google sign-up
       
       const provider = new GoogleAuthProvider();
@@ -153,19 +149,33 @@
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const user = result.user;
+            window.location.assign("/list");
           }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             const email = error.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
+            window.location.assign("/");
           });
       });
 
       //github sign-in
+      
       const provider_github = new GithubAuthProvider();
       document.getElementById("github").addEventListener('click', function() {
-        signInWithRedirect(auth, provider);
-
+          signInWithPopup(auth, provider_github)
+            .then((result) => {
+              const credential = GithubAuthProvider.credentialFromResult(result);
+              const token = credential.accessToken;
+              const user = result.user;
+              window.location.assign("/list");
+            }).catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              const email = error.email;
+              const credential = GithubAuthProvider.credentialFromError(error);
+              window.location.assign("/");
+            });
       });
 
 
